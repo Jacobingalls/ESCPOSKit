@@ -6,11 +6,12 @@
 //
 
 import Foundation
+
+#if canImport(AppKit)
 import AppKit
 
 public extension ESCPOSCommand {
-    static func printMonochromePhoto(url: URL) throws -> ESCPOSCommand {
-        let image = NSImage(contentsOf: url)!
+    static func printMonochromePhoto(image: NSImage) throws -> ESCPOSCommand {
         let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)!
         
         var bits: [[Bool]] = []
@@ -60,3 +61,4 @@ public extension ESCPOSCommand {
         ])
     }
 }
+#endif
